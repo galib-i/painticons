@@ -15,7 +15,7 @@ Generate colourful Lawnicons.
 - Or generate a coloured icon pack:
   - foregrounds from a fixed HEX or the apps' original icons' top 3 non-background colours;
   - fixed-HEX background;
-  - one of 30 Material 3 shapes.
+  - one of 34 Material 3 shapes.
 
 ## Get Started
 
