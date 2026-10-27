@@ -5,7 +5,8 @@ name: Sync upstream icons
 # Safety: an icon is only overwritten while it still matches the copy recorded in
 # .github/upstream-sync-baseline, nothing is ever deleted, appfilter only gains
 # unknown entries, and a debug APK must build before anything is pushed. The
-# commit patch-bumps version.properties, which is what makes release.yml publish.
+# commit patch-bumps version.properties, then dispatches release.yml by hand
+# because a push made with GITHUB_TOKEN never starts another workflow.
 
 on:
   schedule:
@@ -20,6 +21,7 @@ on:
 
 permissions:
   contents: write
+  actions: write
 
 concurrency:
   group: sync-upstream-icons
@@ -103,8 +105,8 @@ jobs:
         run: |
           set -euo pipefail
 
-          # Patch-bumps version.properties and exports VERSION. release.yml only
-          # triggers on this file, so the bump is what publishes the icons.
+          # Patch-bumps version.properties and exports VERSION. release.yml reads
+          # this file, so the bump sets the version it publishes.
           bump_version() {
             local name code
             name=$(grep '^versionName=' version.properties | cut -d'=' -f2 || true)
@@ -178,6 +180,21 @@ jobs:
           done
           echo "::error::could not push the sync commit"
           exit 1
+
+      - name: Trigger the release workflow
+        if: steps.merge.outputs.changed == 'true'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -euo pipefail
+          # GITHUB_TOKEN pushes never trigger workflows, but workflow_dispatch is
+          # the documented exception - so start the release explicitly.
+          curl -fsS -X POST \
+            -H "Authorization: Bearer $GH_TOKEN" \
+            -H "Accept: application/vnd.github+json" \
+            "https://api.github.com/repos/$GITHUB_REPOSITORY/actions/workflows/release.yml/dispatches" \
+            -d '{"ref":"develop"}'
+          echo "Release workflow dispatched on develop"
 
       - name: Upload sync report
         if: always()

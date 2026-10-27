@@ -6,6 +6,9 @@ on:
       - develop
     paths:
       - "version.properties"
+  # The icon sync cannot start this workflow with a push (GITHUB_TOKEN pushes
+  # never trigger workflows), so it dispatches it - and you can run it by hand.
+  workflow_dispatch:
 
 permissions:
   contents: write
