@@ -149,7 +149,7 @@ jobs:
 
           for attempt in 1 2 3; do
             if git push origin HEAD:develop; then
-              echo "Pushed $VERSION to develop; the release workflow publishes it"
+              echo "Pushed $VERSION to develop"
               exit 0
             fi
             echo "push rejected, rebasing onto develop and retrying (attempt $attempt)"
