@@ -1,0 +1,188 @@
+name: Sync upstream icons
+
+# Monthly: pull the icons Lawnicons added or changed from LawnchairLauncher/lawnicons.
+#
+# Safety: an icon is only overwritten while it still matches the copy recorded in
+# .github/upstream-sync-baseline, nothing is ever deleted, appfilter only gains
+# unknown entries, and a debug APK must build before anything is pushed. The
+# commit patch-bumps version.properties, which is what makes release.yml publish.
+
+on:
+  schedule:
+    # 03:17 UTC on the 1st.
+    - cron: "17 3 1 * *"
+  workflow_dispatch:
+    inputs:
+      upstream_ref:
+        description: Lawnicons ref to sync from
+        required: true
+        default: develop
+
+permissions:
+  contents: write
+
+concurrency:
+  group: sync-upstream-icons
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    name: Sync icons, build, commit
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout develop
+        uses: actions/checkout@v7
+        with:
+          ref: develop
+          fetch-depth: 0
+
+      - name: Set up JDK 21
+        uses: actions/setup-java@v6
+        with:
+          java-version: "21"
+          distribution: "temurin"
+
+      - name: Cache Gradle packages
+        uses: actions/cache@v6
+        with:
+          path: |
+            ~/.gradle/caches
+            ~/.gradle/wrapper
+          key: gradle-${{ hashFiles('**/*.gradle.kts', '**/gradle-wrapper.properties') }}
+          restore-keys: gradle-
+
+      - name: Resolve Lawnicons commit
+        id: upstream
+        env:
+          REF: ${{ inputs.upstream_ref || 'develop' }}
+        run: |
+          SHA=$(git ls-remote https://github.com/LawnchairLauncher/lawnicons.git "refs/heads/$REF" | cut -f1)
+          if [ -z "$SHA" ]; then
+            echo "::error::could not resolve Lawnicons $REF"
+            exit 1
+          fi
+          echo "sha=$SHA" >> "$GITHUB_OUTPUT"
+          echo "Lawnicons $REF is at $SHA"
+
+      - name: Download Lawnicons icons
+        env:
+          SHA: ${{ steps.upstream.outputs.sha }}
+        run: |
+          mkdir -p "$RUNNER_TEMP/upstream"
+          curl -fsSL "https://codeload.github.com/LawnchairLauncher/lawnicons/tar.gz/$SHA" \
+            | tar -xz -C "$RUNNER_TEMP/upstream" --strip-components=1 \
+                "lawnicons-$SHA/svgs" \
+                "lawnicons-$SHA/app/assets/appfilter.xml"
+
+      - name: Merge new icons
+        id: merge
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          python3 scripts/sync_upstream_icons.py \
+            --upstream-dir "$RUNNER_TEMP/upstream" \
+            --upstream-sha "${{ steps.upstream.outputs.sha }}" \
+            --report "$RUNNER_TEMP/sync-report.json"
+
+      - name: Make Gradle executable
+        if: steps.merge.outputs.changed == 'true'
+        run: chmod +x gradlew
+
+      - name: Build debug APK
+        if: steps.merge.outputs.changed == 'true'
+        run: ./gradlew assembleAppDebug
+
+      - name: Bump version, commit and push to develop
+        if: steps.merge.outputs.changed == 'true'
+        env:
+          ADDED: ${{ steps.merge.outputs.added }}
+          UPDATED: ${{ steps.merge.outputs.updated }}
+          APPFILTER_ADDED: ${{ steps.merge.outputs.appfilter_added }}
+          SHA: ${{ steps.upstream.outputs.sha }}
+        run: |
+          set -euo pipefail
+
+          # Patch-bumps version.properties and exports VERSION. release.yml only
+          # triggers on this file, so the bump is what publishes the icons.
+          bump_version() {
+            local name code
+            name=$(grep '^versionName=' version.properties | cut -d'=' -f2 || true)
+            code=$(grep '^versionCode=' version.properties | cut -d'=' -f2 || true)
+            if ! printf '%s' "$name" | grep -Eq '^[0-9]+\.[0-9]+\.[0-9]+$'; then
+              echo "::error::versionName '$name' in version.properties is not plain semver - expected e.g. 0.0.12"
+              return 1
+            fi
+            if ! printf '%s' "$code" | grep -Eq '^[0-9]+$'; then
+              echo "::error::versionCode '$code' in version.properties is not an integer"
+              return 1
+            fi
+            VERSION=$(printf '%s' "$name" | awk -F. '{ print $1 "." $2 "." $3 + 1 }')
+            sed -i \
+              -e "s/^versionName=.*/versionName=$VERSION/" \
+              -e "s/^versionCode=.*/versionCode=$((code + 1))/" \
+              version.properties
+            echo "Bumped $name ($code) to $VERSION ($((code + 1)))"
+          }
+
+          stage_sync() {
+            git add svgs app/assets/appfilter.xml .github/upstream-sync-baseline version.properties
+            if git diff --cached --quiet; then
+              echo "::error::nothing staged, refusing to push an empty sync"
+              return 1
+            fi
+          }
+
+          commit_sync() {
+            git commit "$@" \
+              -m "chore: sync icons from Lawnicons ${SHA:0:10}" \
+              -m "$ADDED new icons, $UPDATED updated icons, $APPFILTER_ADDED new appfilter entries. Icons with local changes were left untouched and the debug APK build passed. Bumps the version to $VERSION so the release workflow publishes this sync."
+          }
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          bump_version
+          stage_sync
+          commit_sync
+
+          for attempt in 1 2 3; do
+            if git push origin HEAD:develop; then
+              echo "Pushed $VERSION to develop; the release workflow publishes it"
+              exit 0
+            fi
+            echo "push rejected, rebasing onto develop and retrying (attempt $attempt)"
+            if git pull --rebase origin develop; then
+              # develop may have landed the same bump: bump past it so this push
+              # still changes version.properties and a release gets published.
+              if git diff --quiet origin/develop HEAD -- version.properties; then
+                echo "develop is already at $VERSION, bumping past it"
+                bump_version
+                git add version.properties
+                commit_sync --amend
+              fi
+              continue
+            fi
+            # version.properties is the one conflict we can fix here: take
+            # develop's version and bump it again, keeping the icons.
+            if [ "$(git diff --name-only --diff-filter=U)" != "version.properties" ]; then
+              git rebase --abort || true
+              echo "::error::could not rebase the sync commit onto develop; re-run the workflow"
+              exit 1
+            fi
+            echo "develop bumped the version too, re-bumping on top of it"
+            git checkout --ours -- version.properties
+            bump_version
+            git add version.properties
+            GIT_EDITOR=true git rebase --continue
+            commit_sync --amend
+          done
+          echo "::error::could not push the sync commit"
+          exit 1
+
+      - name: Upload sync report
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: sync-report
+          path: ${{ runner.temp }}/sync-report.json
+          if-no-files-found: ignore
