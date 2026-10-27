@@ -22984,4 +22984,32 @@
   <item component="ComponentInfo{com.hyundaicard.appcard/com.hyundaicard.appcard.app.intro.LoadingForNormalActivity}" drawable="hyundai_card" name="현대카드 ~~ Hyundai Card" />
   <item component="ComponentInfo{com.nttdocomo.android.dmenu2/com.nttdocomo.android.docomo_market.ui.StartupActivity}" drawable="d_menu" name="ｄメニュー ~~ d menu" />
   <item component="ComponentInfo{space.takashima.keypo/org.mozc.android.inputmethod.japanese.LauncherActivity}" drawable="generic_keyboard" name="ﾀｸﾄ ｷｰﾎﾞｰﾄﾞ ~~ Takt keyboard" />
+  <item component="ComponentInfo{com.alaskaairlines.android/com.alaskaairlines.android.AlaskaHawaiianNightAlias}" drawable="alaska_hawaiian" name="Alaska Hawaiian" />
+  <item component="ComponentInfo{com.alaskaairlines.android/com.alaskaairlines.android.AlaskaAirlinesTailAlias}" drawable="alaska_hawaiian" name="Alaska Hawaiian" />
+  <item component="ComponentInfo{net.west_hino.app_assist/net.west_hino.app_assist.ui.ActivityMain}" drawable="ladb" name="App Assist" />
+  <item component="ComponentInfo{com.axs.android/com.axs.android.ui.content.main.MainActivity}" drawable="axs_tickets" name="AXS Tickets" />
+  <item component="ComponentInfo{com.axs.android/com.axs.android.ui.content.SplashActivity}" drawable="axs_tickets" name="AXS Tickets" />
+  <item component="ComponentInfo{com.barnesandnoble.app/com.barnesandnoble.app.MainActivity}" drawable="barnes_and_noble" name="Barnes &amp;amp; Noble" />
+  <item component="ComponentInfo{com.sosauce.cutecalc/com.sosauce.vanilla.app.MainActivity}" drawable="cutecalc" name="CuteCalc" />
+  <item component="ComponentInfo{com.Wiggles3D.FiveMinuteDungeonTimer/com.unity3d.player.UnityPlayerActivity}" drawable="five_minute_dungeon_timer" name="Five Minute Dungeon Timer" />
+  <item component="ComponentInfo{com.healthequity.healthequitymobile/rEJ4B3.otJxw6.pltby4.baPc22.myGOR9}" drawable="healthequity" name="HealthEquity" />
+  <item component="ComponentInfo{com.healthequity.healthequitymobile/gbAqU7.cByf33.debrr7.byEgo4.dgZya6}" drawable="healthequity" name="HealthEquity" />
+  <item component="ComponentInfo{com.Afterburn.Inbento/com.unity3d.player.UnityPlayerActivity}" drawable="inbento" name="inbento" />
+  <item component="ComponentInfo{com.crunchyroll.gv.inbento/com.unity3d.player.UnityPlayerActivity}" drawable="inbento" name="inbento" />
+  <item component="ComponentInfo{com.iqcu.iqcu/com.iqcu.iqcu.MainActivity}" drawable="iq" name="iQ" />
+  <item component="ComponentInfo{org.kp.m/org.kp.m.splashscreen.view.SplashActivity}" drawable="kaiser_permanente_kp" name="Kaiser Permanente (KP)" />
+  <item component="ComponentInfo{io.keybase.ossifrage/io.keybase.ossifrage.MainActivity}" drawable="keybase" name="Keybase" />
+  <item component="ComponentInfo{com.kfteausa.mobile/com.kfteausa.mobile.MainActivity}" drawable="kung_fu_tea" name="Kung Fu Tea" />
+  <item component="ComponentInfo{com.apptionlabs.meater_app/com.apptionlabs.meater_app.qsg.ui.base.QSGActivity}" drawable="meater" name="MEATER" />
+  <item component="ComponentInfo{com.apptionlabs.meater_app/com.apptionlabs.meater_app.MainActivity}" drawable="meater" name="MEATER" />
+  <item component="ComponentInfo{app.murinelauncher/com.android.launcher3.Launcher}" drawable="murine_launcher" name="Murine Launcher" />
+  <item component="ComponentInfo{com.nm.nm/com.nm.app.ui.Activity}" drawable="northwestern_mutual_nm" name="Northwestern Mutual (NM)" />
+  <item component="ComponentInfo{com.onpointcommunitycreditunion5123.mobile/com.q2.app.core.ui.LauncherActivity}" drawable="onpoint" name="OnPoint" />
+  <item component="ComponentInfo{com.passportparking.mobile.parkingkitty/com.passportparking.mobile.ParkingKittyApp}" drawable="parking_kitty" name="Parking Kitty" />
+  <item component="ComponentInfo{com.pawspik/com.smart.ThingSplashActivity}" drawable="pawspik" name="PawsPik" />
+  <item component="ComponentInfo{au.com.shiftyjelly.pocketcasts/au.com.shiftyjelly.pocketcasts.ui.MainActivityDefault}" drawable="pocket_casts" name="Pocket Casts" />
+  <item component="ComponentInfo{com.Majorariatto.Pureya/com.unity3d.player.UnityPlayerActivity}" drawable="pureya" name="pureya" />
+  <item component="ComponentInfo{com.rover.android/com.rover.android.deeplink.DeepLinkWithSplashActivity}" drawable="rover" name="Rover" />
+  <item component="ComponentInfo{com.pcfinancial.mobile/com.pcfinancial.mobile.MainActivity}" drawable="simplii" name="Simplii" />
+  <item component="ComponentInfo{com.PalmCourt.Wavelength/com.google.firebase.MessagingUnityPlayerActivity}" drawable="wavelength" name="Wavelength" />
 </resources>
