@@ -23012,4 +23012,162 @@
   <item component="ComponentInfo{com.rover.android/com.rover.android.deeplink.DeepLinkWithSplashActivity}" drawable="rover" name="Rover" />
   <item component="ComponentInfo{com.pcfinancial.mobile/com.pcfinancial.mobile.MainActivity}" drawable="simplii" name="Simplii" />
   <item component="ComponentInfo{com.PalmCourt.Wavelength/com.google.firebase.MessagingUnityPlayerActivity}" drawable="wavelength" name="Wavelength" />
+  <item drawableIgnore="true" component="ComponentInfo{org.onekash.kashcal/org.onekash.kashcal.MainActivityDay1}" drawable="themed_icon_calendar_1" name="KashCal" />
+  <item drawableIgnore="true" component="ComponentInfo{org.onekash.kashcal/org.onekash.kashcal.MainActivityDay2}" drawable="themed_icon_calendar_2" name="KashCal" />
+  <item drawableIgnore="true" component="ComponentInfo{org.onekash.kashcal/org.onekash.kashcal.MainActivityDay3}" drawable="themed_icon_calendar_3" name="KashCal" />
+  <item drawableIgnore="true" component="ComponentInfo{org.onekash.kashcal/org.onekash.kashcal.MainActivityDay4}" drawable="themed_icon_calendar_4" name="KashCal" />
+  <item drawableIgnore="true" component="ComponentInfo{org.onekash.kashcal/org.onekash.kashcal.MainActivityDay5}" drawable="themed_icon_calendar_5" name="KashCal" />
+  <item drawableIgnore="true" component="ComponentInfo{org.onekash.kashcal/org.onekash.kashcal.MainActivityDay6}" drawable="themed_icon_calendar_6" name="KashCal" />
+  <item drawableIgnore="true" component="ComponentInfo{org.onekash.kashcal/org.onekash.kashcal.MainActivityDay7}" drawable="themed_icon_calendar_7" name="KashCal" />
+  <item drawableIgnore="true" component="ComponentInfo{org.onekash.kashcal/org.onekash.kashcal.MainActivityDay8}" drawable="themed_icon_calendar_8" name="KashCal" />
+  <item drawableIgnore="true" component="ComponentInfo{org.onekash.kashcal/org.onekash.kashcal.MainActivityDay9}" drawable="themed_icon_calendar_9" name="KashCal" />
+  <item drawableIgnore="true" component="ComponentInfo{org.onekash.kashcal/org.onekash.kashcal.MainActivityDay10}" drawable="themed_icon_calendar_10" name="KashCal" />
+  <item drawableIgnore="true" component="ComponentInfo{org.onekash.kashcal/org.onekash.kashcal.MainActivityDay11}" drawable="themed_icon_calendar_11" name="KashCal" />
+  <item drawableIgnore="true" component="ComponentInfo{org.onekash.kashcal/org.onekash.kashcal.MainActivityDay12}" drawable="themed_icon_calendar_12" name="KashCal" />
+  <item drawableIgnore="true" component="ComponentInfo{org.onekash.kashcal/org.onekash.kashcal.MainActivityDay13}" drawable="themed_icon_calendar_13" name="KashCal" />
+  <item drawableIgnore="true" component="ComponentInfo{org.onekash.kashcal/org.onekash.kashcal.MainActivityDay14}" drawable="themed_icon_calendar_14" name="KashCal" />
+  <item drawableIgnore="true" component="ComponentInfo{org.onekash.kashcal/org.onekash.kashcal.MainActivityDay15}" drawable="themed_icon_calendar_15" name="KashCal" />
+  <item drawableIgnore="true" component="ComponentInfo{org.onekash.kashcal/org.onekash.kashcal.MainActivityDay16}" drawable="themed_icon_calendar_16" name="KashCal" />
+  <item drawableIgnore="true" component="ComponentInfo{org.onekash.kashcal/org.onekash.kashcal.MainActivityDay17}" drawable="themed_icon_calendar_17" name="KashCal" />
+  <item drawableIgnore="true" component="ComponentInfo{org.onekash.kashcal/org.onekash.kashcal.MainActivityDay18}" drawable="themed_icon_calendar_18" name="KashCal" />
+  <item drawableIgnore="true" component="ComponentInfo{org.onekash.kashcal/org.onekash.kashcal.MainActivityDay19}" drawable="themed_icon_calendar_19" name="KashCal" />
+  <item drawableIgnore="true" component="ComponentInfo{org.onekash.kashcal/org.onekash.kashcal.MainActivityDay20}" drawable="themed_icon_calendar_20" name="KashCal" />
+  <item drawableIgnore="true" component="ComponentInfo{org.onekash.kashcal/org.onekash.kashcal.MainActivityDay21}" drawable="themed_icon_calendar_21" name="KashCal" />
+  <item drawableIgnore="true" component="ComponentInfo{org.onekash.kashcal/org.onekash.kashcal.MainActivityDay22}" drawable="themed_icon_calendar_22" name="KashCal" />
+  <item drawableIgnore="true" component="ComponentInfo{org.onekash.kashcal/org.onekash.kashcal.MainActivityDay23}" drawable="themed_icon_calendar_23" name="KashCal" />
+  <item drawableIgnore="true" component="ComponentInfo{org.onekash.kashcal/org.onekash.kashcal.MainActivityDay24}" drawable="themed_icon_calendar_24" name="KashCal" />
+  <item drawableIgnore="true" component="ComponentInfo{org.onekash.kashcal/org.onekash.kashcal.MainActivityDay25}" drawable="themed_icon_calendar_25" name="KashCal" />
+  <item drawableIgnore="true" component="ComponentInfo{org.onekash.kashcal/org.onekash.kashcal.MainActivityDay26}" drawable="themed_icon_calendar_26" name="KashCal" />
+  <item drawableIgnore="true" component="ComponentInfo{org.onekash.kashcal/org.onekash.kashcal.MainActivityDay27}" drawable="themed_icon_calendar_27" name="KashCal" />
+  <item drawableIgnore="true" component="ComponentInfo{org.onekash.kashcal/org.onekash.kashcal.MainActivityDay28}" drawable="themed_icon_calendar_28" name="KashCal" />
+  <item drawableIgnore="true" component="ComponentInfo{org.onekash.kashcal/org.onekash.kashcal.MainActivityDay29}" drawable="themed_icon_calendar_29" name="KashCal" />
+  <item drawableIgnore="true" component="ComponentInfo{org.onekash.kashcal/org.onekash.kashcal.MainActivityDay30}" drawable="themed_icon_calendar_30" name="KashCal" />
+  <item drawableIgnore="true" component="ComponentInfo{org.onekash.kashcal/org.onekash.kashcal.MainActivityDay31}" drawable="themed_icon_calendar_31" name="KashCal" />
+  <item component="ComponentInfo{com.telstra.android.afl/afl.pl.com.afl.launch.LaunchActivity}" drawable="afl" name="AFL" />
+  <item component="ComponentInfo{com.aircanada/com.aircanada.mobile.ui.activity.MainActivity.DarkIconLauncher}" drawable="air_canada" name="Air Canada" />
+  <item component="ComponentInfo{com.aircanada/com.aircanada.mobile.ui.activity.OnBoardingActivity.DarkIconLauncher}" drawable="air_canada" name="Air Canada" />
+  <item component="ComponentInfo{com.airvisual/com.airvisual.ui.activity.SplashActivity}" drawable="airvisual" name="AirVisual" />
+  <item component="ComponentInfo{net.aliasvault.app/net.aliasvault.app.MainActivity}" drawable="aliasvault" name="AliasVault" />
+  <item component="ComponentInfo{com.anki.ankiblock/com.anki.ankiblock.MainActivity}" drawable="ankiblock" name="AnkiBlock" />
+  <item component="ComponentInfo{come.nanodata.armsx2/com.armsx2.BootSplashActivity}" drawable="armsx2" name="ARMSX2" />
+  <item component="ComponentInfo{come.nanodata.armsx2/kr.co.iefriends.pcsx2.MainActivity}" drawable="armsx2" name="ARMSX2" />
+  <item component="ComponentInfo{come.nanodata.armsx2/kr.co.iefriends.pcsx2.activities.MainActivity}" drawable="armsx2" name="ARMSX2" />
+  <item component="ComponentInfo{come.nanodata.armsx2.debug/kr.co.iefriends.pcsx2.activities.BootSplashActivity}" drawable="armsx2" name="ARMSX2" />
+  <item component="ComponentInfo{com.armsx2/com.armsx2.BootSplashActivity}" drawable="armsx2" name="ARMSX2" />
+  <item component="ComponentInfo{io.github.giuig.auraninja/io.github.giuig.auraninja.MainActivity}" drawable="auraninja" name="Auraninja" />
+  <item component="ComponentInfo{com.guppir.swipr/com.guppir.swipr.ui.MainActivity}" drawable="befriend" name="BeFriend" />
+  <item component="ComponentInfo{com.guppir.swipr/com.guppir.swipr.MainActivity}" drawable="befriend" name="BeFriend" />
+  <item component="ComponentInfo{com.music.bitchord/com.music.bitchord.MainActivity}" drawable="bitchord" name="BitChord" />
+  <item component="ComponentInfo{com.music.bitchord/com.music.bitchord.LauncherDefault}" drawable="bitchord" name="BitChord" />
+  <item component="ComponentInfo{com.brusselsairlines.bmobile/com.lhgroup.lhgroupapp.activity.MainActivity}" drawable="brussels_airlines" name="Brussels Airlines" />
+  <item component="ComponentInfo{com.afl.afl_carl.android/com.pulselive.aflclubs.main.SplashActivity}" drawable="carlton" name="Carlton" />
+  <item component="ComponentInfo{org.citron.citron_emu/org.citron.citron_emu.ui.main.MainActivity}" drawable="citron_neo" name="Citron Neo" />
+  <item component="ComponentInfo{com.coles.android.shopmate/com.coles.android.shopmate.ui.splash.SplashActivity}" drawable="coles" name="Coles" />
+  <item component="ComponentInfo{io.github.giuig.decisioninja/io.github.giuig.decisioninja.MainActivity}" drawable="decisioninja" name="Decisioninja" />
+  <item component="ComponentInfo{com.deel.app/com.deel.app.MainActivity}" drawable="deel" name="Deel" />
+  <item component="ComponentInfo{com.fairfax.domain/au.com.domain.presentation.ui.appicon.SplashScreenAliasDefault}" drawable="domain" name="Domain" />
+  <item component="ComponentInfo{com.fairfax.domain/au.com.domain.core.ui.state.SplashScreenAliasDefault}" drawable="domain" name="Domain" />
+  <item component="ComponentInfo{com.activehours/com.activehours.features.splash.SplashActivity}" drawable="earnin" name="EarnIn" />
+  <item component="ComponentInfo{com.activehours/com.activehours.ui.activities.ActLanding}" drawable="earnin" name="EarnIn" />
+  <item component="ComponentInfo{com.lyrebirdstudio.facelab/com.google.android.archive.ReactivateActivity}" drawable="facelab" name="FaceLab" />
+  <item component="ComponentInfo{com.appslab.watchfaces.marketplace/com.appslab.watchfaces.marketplace.MainActivity}" drawable="facelab" name="FaceLab" />
+  <item component="ComponentInfo{org.familysearch.mobile.memories/org.familysearch.mobile.memories.MemoriesMainActivity}" drawable="familysearch_tree" name="FamilySearch Memories" />
+  <item component="ComponentInfo{org.familysearch.mobile/org.familysearch.mobile.tree.MainActivity}" drawable="familysearch_tree" name="FamilySearch Tree" />
+  <item component="ComponentInfo{org.familysearch.mobile/org.familysearch.mobile.ui.activity.LauncherActivity}" drawable="familysearch_tree" name="FamilySearch Tree" />
+  <item component="ComponentInfo{com.beetstra.licenseplate/com.beetstra.licenseplate.dev.MainActivity}" drawable="finnik" name="Finnik" />
+  <item component="ComponentInfo{yos.music.player/yos.music.player.MainActivity}" drawable="flamingo_music_player" name="Flamingo Music Player" />
+  <item component="ComponentInfo{br.com.flashapp/br.com.flashapp.MainActivity}" drawable="flash_beneficios" name="Flash Benefícios" />
+  <item component="ComponentInfo{com.fluxer/com.fluxer.MainActivity.default}" drawable="fluxer" name="Fluxer" />
+  <item component="ComponentInfo{com.fluxer/com.fluxer.MainActivity}" drawable="fluxer" name="Fluxer" />
+  <item component="ComponentInfo{com.flyfrontier.android/com.flyfrontier.android.MainActivity}" drawable="frontier" name="Frontier" />
+  <item component="ComponentInfo{fusion.link.remote/fusion.link.remote.ui.activity.SplashScreenActivity}" drawable="garmin_audio" name="Garmin Audio" />
+  <item component="ComponentInfo{com.garmin.android.apps.vivokid/com.garmin.android.apps.vivokid.ui.welcome.StartupActivity}" drawable="garmin_jr" name="Garmin Jr" />
+  <item component="ComponentInfo{com.digcy.pilot/com.digcy.pilot.PilotStartupActivity}" drawable="garmin_pilot" name="Garmin Pilot" />
+  <item component="ComponentInfo{com.google.android.apps.messaging/com.google.android.apps.messaging.dittosatellite.impl.DittoWebActivity}" drawable="google_messages" name="Google Messages" />
+  <item component="ComponentInfo{one.yufz.hmspush/one.yufz.hmspush.app.MainActivityAlias}" drawable="hmspush" name="HMSPush" />
+  <item component="ComponentInfo{one.yufz.hmspush/one.yufz.hmspush.app.MainActivity}" drawable="hmspush" name="HMSPush" />
+  <item component="ComponentInfo{app.hoarder.hoardermobile/app.hoarder.hoardermobile.MainActivity}" drawable="karakeep" name="Karakeep" />
+  <item component="ComponentInfo{org.onekash.kashcal/org.onekash.kashcal.MainActivitySupporterCalendar}" drawable="kashcal_supporter" name="KashCal Supporter" />
+  <item component="ComponentInfo{org.onekash.kashcal/org.onekash.kashcal.MainActivitySupporter}" drawable="kashcal_supporter" name="KashCal Supporter" />
+  <item component="ComponentInfo{com.skiy.lane/com.skiy.lane.SplashActivity}" drawable="lane" name="Lane" />
+  <item component="ComponentInfo{br.com.letmein.app/br.com.letmein.app.MainActivity}" drawable="letmein" name="LetMeIN" />
+  <item component="ComponentInfo{com.github.libretube.debug/com.github.libretube.activities.MainActivity}" drawable="libretube_debug" name="LibreTube Debug" />
+  <item component="ComponentInfo{com.github.libretube.debug/com.github.libretube.DefaultLight}" drawable="libretube_debug" name="LibreTube Debug" />
+  <item component="ComponentInfo{com.github.libretube.debug/com.github.libretube.IconBird}" drawable="libretube_debug" name="LibreTube Debug" />
+  <item component="ComponentInfo{com.github.libretube.debug/com.github.libretube.IconFire}" drawable="libretube_debug" name="LibreTube Debug" />
+  <item component="ComponentInfo{com.github.libretube.debug/com.github.libretube.IconFlame}" drawable="libretube_debug" name="LibreTube Debug" />
+  <item component="ComponentInfo{com.github.libretube.debug/com.github.libretube.IconGradient}" drawable="libretube_debug" name="LibreTube Debug" />
+  <item component="ComponentInfo{com.github.libretube.debug/com.github.libretube.IconLegacy}" drawable="libretube_debug" name="LibreTube Debug" />
+  <item component="ComponentInfo{com.github.libretube.debug/com.github.libretube.IconShaped}" drawable="libretube_debug" name="LibreTube Debug" />
+  <item component="ComponentInfo{com.github.libretube.debug/com.github.libretube.IconTorch}" drawable="libretube_debug" name="LibreTube Debug" />
+  <item component="ComponentInfo{com.github.libretube.debug/com.github.libretube.MainActivity}" drawable="libretube_debug" name="LibreTube Debug" />
+  <item component="ComponentInfo{com.github.libretube.debug/com.github.libretube.ui.activities.MainActivity}" drawable="libretube_debug" name="LibreTube Debug" />
+  <item component="ComponentInfo{sg.gov.app.mol/sg.gov.tech.mol.MainActivity}" drawable="lifesg" name="LifeSG" />
+  <item component="ComponentInfo{au.com.podcastoneaustralia/au.com.podcastoneaustralia.MainActivity}" drawable="listnr" name="LiSTNR" />
+  <item component="ComponentInfo{com.bitmavrick.lumolight/com.bitmavrick.lumolight.MainActivity}" drawable="lumolight" name="Lumolight" />
+  <item component="ComponentInfo{com.ohsnap.mconutilities/com.ohsnap.mconutilities.MainActivity}" drawable="mcon" name="MCON" />
+  <item component="ComponentInfo{gallery.memories/gallery.memories.MainActivity}" drawable="memories_for_nextcloud" name="Memories for Nextcloud" />
+  <item component="ComponentInfo{com.metservice.kryten/com.metservice.kryten.ui.MainActivity}" drawable="metservice" name="MetService" />
+  <item component="ComponentInfo{br.com.net.netapp/br.com.net.netapp.presentation.view.activity.SplashActivity}" drawable="minha_claro_residencial" name="Minha Claro Residencial" />
+  <item component="ComponentInfo{me.mudkip.moememos/me.mudkip.moememos.MainActivity}" drawable="moe_memos" name="Moe Memos" />
+  <item component="ComponentInfo{com.momondo.flightsearch/com.kayak.android.splash.SplashActivity}" drawable="momondo" name="momondo" />
+  <item component="ComponentInfo{com.mourjan.classifieds/com.mourjan.classifieds.MainActivity}" drawable="mourjan" name="mourjan" />
+  <item component="ComponentInfo{au.com.optus.selfservice/au.com.optus.express.moa.onboarding.SplashActivity}" drawable="my_optus" name="My Optus" />
+  <item component="ComponentInfo{sg.gov.ica.mobile.app/sg.gov.ica.mobile.app.MainActivity}" drawable="myica_mobile" name="MyICA Mobile" />
+  <item component="ComponentInfo{com.mymind.access/com.mymind.access.activities.MainActivity}" drawable="mymind" name="mymind" />
+  <item component="ComponentInfo{com.myscript.calculator/com.myscript.calculator.BootstrapActivity}" drawable="myscript_calculator_2" name="MyScript Calculator 2" />
+  <item component="ComponentInfo{com.myscript.calculator.lenovo/com.myscript.calculator.BootstrapActivity}" drawable="myscript_calculator_2" name="MyScript Calculator 2" />
+  <item component="ComponentInfo{com.n0white.n0widgets/com.n0white.n0widgets.MainActivity}" drawable="n0widgets" name="n0widgets" />
+  <item component="ComponentInfo{com.nohpay.app/com.nohpay.app.MainActivity}" drawable="noh" name="Noh" />
+  <item component="ComponentInfo{com.nytimes.cooking/com.nytimes.cooking.SplashScreenActivity}" drawable="nyt_cooking" name="NYT Cooking" />
+  <item component="ComponentInfo{org.openobservatory.ooniprobe/org.ooni.probe.MainActivity}" drawable="ooni_probe" name="OONI Probe" />
+  <item component="ComponentInfo{org.openobservatory.ooniprobe/org.openobservatory.ooniprobe.activity.MainActivity}" drawable="ooni_probe" name="OONI Probe" />
+  <item component="ComponentInfo{com.pg.oralb.oralbapp/com.pg.oralb.oralbapp.StartActivity}" drawable="oral_b" name="Oral-B" />
+  <item component="ComponentInfo{au.com.paystay/au.com.paystay.LauncherActivity}" drawable="paystay" name="PayStay" />
+  <item component="ComponentInfo{com.PChome.Shopping/tw.com.pchome.app24h.MainActivityShopping992026}" drawable="pchome_24h_shopping" name="PChome 24h Shopping" />
+  <item component="ComponentInfo{com.PChome.Shopping/tw.com.pchome.app24h.MainActivityDefault}" drawable="pchome_24h_shopping" name="PChome 24h 購物 ~~ PChome 24h Shopping" />
+  <item component="ComponentInfo{com.PChome.Shopping/tw.com.pchome.app24h.MainActivity}" drawable="pchome_24h_shopping" name="PChome 24h 購物 ~~ PChome 24h Shopping" />
+  <item component="ComponentInfo{com.kooapps.pianotiles2gp/com.cmplay.tile2.ui.AppActivity}" drawable="piano_tiles_2" name="Piano Tiles 2" />
+  <item component="ComponentInfo{com.kooapps.pianotiles2gp/dev.axmol.app.AppActivity}" drawable="piano_tiles_2" name="Piano Tiles 2" />
+  <item component="ComponentInfo{br.com.preventsenior.aplicativo/br.com.preventsenior.aplicativo.MainActivity}" drawable="prevent_senior" name="Prevent Senior" />
+  <item component="ComponentInfo{ua.prom.b2c/ua.prom.b2c.feature.splash.presentation.SplashActivity}" drawable="prom" name="Prom" />
+  <item component="ComponentInfo{com.m.qr/com.m.qr.home.onboarding.ui.MainActivityLauncher}" drawable="qatar_airways" name="Qatar Airways" />
+  <item component="ComponentInfo{com.m.qr/com.m.qr.home.onboarding.ui.MainActivity}" drawable="qatar_airways" name="Qatar Airways" />
+  <item component="ComponentInfo{br.com.riachuelo.app/br.com.riachuelo.app.MainActivity}" drawable="riachuelo" name="Riachuelo" />
+  <item component="ComponentInfo{it.fast4x.riplay/it.fast4x.riplay.MainActivity}" drawable="riplay" name="RiPlay" />
+  <item component="ComponentInfo{com.roblox.client/com.roblox.client.startup.LauncherAliasClassic}" drawable="roblox_classic_icon" name="Roblox Classic Icon" />
+  <item component="ComponentInfo{com.screenmirrorapp/com.screenmirrorapp.activities.SplashActivity}" drawable="screen_mirroring_and_sharing" name="Screen Mirroring &amp;amp; Sharing" />
+  <item component="ComponentInfo{screen.mirroring.screenmirroring/com.example.myapplication.SplashActivity}" drawable="screen_mirroring_miracast" name="Screen Mirroring Miracast" />
+  <item component="ComponentInfo{com.athos.Sell/com.athos.CondoPro.MainActivity}" drawable="sell" name="Sell" />
+  <item component="ComponentInfo{com.deepend.sen/com.deepend.sen.ui.SplashActivity}" drawable="sen" name="SEN" />
+  <item component="ComponentInfo{dev.otherworld.shoppinglist/dev.otherworld.shoppinglist.MainActivity}" drawable="shopping_list_for_nextcloud" name="Shopping List for Nextcloud" />
+  <item component="ComponentInfo{com.amadeus.merci.client.ui/com.singaporeair.splashscreen.SplashScreenActivity}" drawable="singaporeair" name="SingaporeAir" />
+  <item component="ComponentInfo{relax.sleep.relaxation.sleepingsounds/relax.sleep.relaxation.sleepingsounds.activity.LaunchAcrivity}" drawable="sleep_sounds" name="Sleep Sounds" />
+  <item component="ComponentInfo{com.smilingmind.app/com.smilingmind.app.MainActivity}" drawable="smiling_mind" name="Smiling Mind" />
+  <item component="ComponentInfo{org.tasks/com.todoroo.astrid.activity.TaskListActivity.Red}" drawable="tasks" name="Tasks" />
+  <item component="ComponentInfo{org.tasks/com.todoroo.astrid.activity.TaskListActivity.Pink}" drawable="tasks" name="Tasks" />
+  <item component="ComponentInfo{org.tasks/com.todoroo.astrid.activity.TaskListActivity.Indigo}" drawable="tasks" name="Tasks" />
+  <item component="ComponentInfo{org.tasks/com.todoroo.astrid.activity.TaskListActivity.Lime}" drawable="tasks" name="Tasks" />
+  <item component="ComponentInfo{org.tasks/com.todoroo.astrid.activity.TaskListActivity.DeepOrange}" drawable="tasks" name="Tasks" />
+  <item component="ComponentInfo{org.tasks/com.todoroo.astrid.activity.TaskListActivity.Brown}" drawable="tasks" name="Tasks" />
+  <item component="ComponentInfo{org.tasks/com.todoroo.astrid.activity.TaskListActivity.Grey}" drawable="tasks" name="Tasks" />
+  <item component="ComponentInfo{com.sidhant.tents/com.sidhant.tents.MainActivity}" drawable="tents" name="Tents" />
+  <item component="ComponentInfo{com.memeandsticker.textsticker/com.zlb.sticker.moudle.flash.FlashActivity}" drawable="textsticker" name="TextSticker" />
+  <item component="ComponentInfo{com.themekit.widgets.themes/com.live.wallpaper.theme.background.launcher.free.activity.StartActivity}" drawable="themekit" name="ThemeKit" />
+  <item component="ComponentInfo{com.martinhammer.tickdroid/com.martinhammer.tickdroid.MainActivity}" drawable="tickdroid" name="Tickdroid" />
+  <item component="ComponentInfo{com.toverland.app/com.toverland.app.MainActivity}" drawable="toverland" name="Toverland" />
+  <item component="ComponentInfo{com.trivago/com.trivago.app.MainActivity}" drawable="trivago" name="trivago" />
+  <item component="ComponentInfo{com.omaawr.tuisku/com.omaawr.tuisku.MainActivity}" drawable="tuisku" name="Tuisku" />
+  <item component="ComponentInfo{app.vela/app.vela.Launcher}" drawable="vela_maps" name="Vela Maps" />
+  <item component="ComponentInfo{app.vela/app.vela.LauncherMaps}" drawable="vela_maps" name="Vela Maps" />
+  <item component="ComponentInfo{com.llsl.viper4android/com.llsl.viper4android.ui.MainActivity}" drawable="viper4android" name="ViPER4Android" />
+  <item component="ComponentInfo{au.com.weatherzone.android.weatherzonefreeapp/au.com.weatherzone.android.weatherzonefreeapp.LauncherActivity}" drawable="weatherzone" name="Weatherzone" />
+  <item component="ComponentInfo{slide.widgetFrenzy/slide.widgetFrenzy.MainActivity}" drawable="widgetopia" name="widgetopia" />
+  <item component="ComponentInfo{slide.widgetFrenzy/slide.widgetFrenzy.CheckPermissionsActivity}" drawable="widgetopia" name="widgetopia" />
+  <item component="ComponentInfo{slide.widgetFrenzy/slide.watchFrenzy.CheckPermissionsActivity}" drawable="widgetopia" name="widgetopia" />
+  <item component="ComponentInfo{at.wienerlinien.wienmobillab/at.upstream.citymobil.MainActivity}" drawable="wien_mobil" name="Wien Mobil" />
+  <item component="ComponentInfo{jp.co.yahoo.android.yauction/jp.co.yahoo.android.yauction.HomeActivity}" drawable="yahoo_auctions_japan" name="Y!オ ~~  Yahoo! Auctions Japan" />
+  <item component="ComponentInfo{com.zeteo.app/com.zeteo.app.MainActivity}" drawable="zeteo" name="Zeteo" />
+  <item component="ComponentInfo{nutstore.android/nutstore.android.SplashScreen}" drawable="nutstore" name="堅果雲 ~~ Nutstore" />
+  <item component="ComponentInfo{com.vieshow.vscinemas/com.vieshow.vscinemas.MainActivity}" drawable="vieshow_cinemas" name="威秀影城 ~~ Vieshow Cinemas" />
 </resources>
