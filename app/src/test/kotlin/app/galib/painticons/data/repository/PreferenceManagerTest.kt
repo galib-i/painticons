@@ -144,10 +144,10 @@ class PreferenceManagerTest {
     }
 
     @Test
-    fun `preference manager selected icon shape defaults to the circle and can be set`() {
+    fun `preference manager selected icon shape defaults to no shape and can be set`() {
         val manager = PreferenceManager(InMemoryPreferenceStore())
 
-        assertEquals("Circle", manager.selectedIconShape.get())
+        assertEquals("None", manager.selectedIconShape.get())
         manager.selectedIconShape.set("Heart")
 
         assertEquals("Heart", manager.selectedIconShape.get())

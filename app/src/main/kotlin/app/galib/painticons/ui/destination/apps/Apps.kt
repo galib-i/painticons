@@ -16,9 +16,12 @@
 
 package app.galib.painticons.ui.destination.apps
 
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
@@ -67,6 +70,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.produceState
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.saveable.rememberSaveable
@@ -75,6 +79,10 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.ImageBitmap
+import androidx.compose.ui.graphics.asImageBitmap
+import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.platform.LocalLayoutDirection
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
@@ -93,6 +101,7 @@ import app.galib.painticons.data.model.IconShape
 import app.galib.painticons.data.model.InstalledApp
 import app.galib.painticons.data.model.PaintedIconSettings
 import app.galib.painticons.data.model.SearchMode
+import app.galib.painticons.data.util.toIconBitmap
 import app.galib.painticons.ui.components.TopBarButtons
 import app.galib.painticons.ui.components.home.HomeTopBar
 import app.galib.painticons.ui.components.home.iconpreview.IconPreview
@@ -108,8 +117,10 @@ import app.galib.painticons.ui.util.PreviewProviders
 import app.galib.painticons.ui.util.SampleData
 import dev.zacsweers.metrox.viewmodel.metroViewModel
 import kotlin.time.Duration.Companion.milliseconds
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import kotlinx.serialization.Serializable
 
 /** The size of the icons in the grid. */
@@ -454,7 +465,8 @@ private fun InstalledAppItem(
     onClearIcon: () -> Unit,
     modifier: Modifier = Modifier,
 ) {
-    val iconInfo = app.iconInfo ?: return
+    val iconInfo = app.iconInfo
+    val isCovered = iconInfo != null
     var showSheet by rememberSaveable { mutableStateOf(false) }
     var showColors by rememberSaveable { mutableStateOf(false) }
     val color = settings.foregroundColorFor(selectedColor, app.colors.firstOrNull())
@@ -471,26 +483,35 @@ private fun InstalledAppItem(
         modifier = modifier.fillMaxWidth(),
     ) {
         Box {
-            IconPreview(
-                iconInfo = iconInfo,
-                // IconPreview pads the icon itself, hence the additional space.
-                modifier = Modifier.size(IconSize + 16.dp),
-                tint = color?.let { Color(it) },
-                iconBackground = Color(settings.backgroundColor),
-                shape = settings.shape.polygon,
-                showSheet = showSheet,
-                onToggleSheet = { visible ->
-                    if (isColorPickerEnabled) {
-                        showColors = !showColors
-                    } else {
-                        showSheet = visible
-                    }
-                },
-            )
+            if (iconInfo != null) {
+                IconPreview(
+                    iconInfo = iconInfo,
+                    // IconPreview pads the icon itself, hence the additional space.
+                    modifier = Modifier.size(IconSize + 16.dp),
+                    tint = color?.let { Color(it) },
+                    iconBackground = Color(settings.backgroundColor),
+                    shape = settings.shape.polygon,
+                    showSheet = showSheet,
+                    onToggleSheet = { visible ->
+                        if (isColorPickerEnabled) {
+                            showColors = !showColors
+                        } else {
+                            showSheet = visible
+                        }
+                    },
+                )
+            } else {
+                SystemAppIcon(
+                    app = app,
+                    onClick = { showColors = true },
+                    modifier = Modifier.size(IconSize + 16.dp),
+                )
+            }
             AppIconMenu(
-                colors = app.colors,
-                currentColor = color,
-                defaultColor = defaultColor,
+                // Colours only apply to the icons the pack paints.
+                colors = if (isCovered) app.colors else emptyList(),
+                currentColor = if (isCovered) color else null,
+                defaultColor = if (isCovered) defaultColor else null,
                 selectedIconName = selectedIconName,
                 availableIcons = availableIcons,
                 expanded = showColors,
@@ -522,6 +543,45 @@ private fun InstalledAppItem(
             modifier = Modifier.padding(top = 4.dp),
         )
     }
+}
+
+/**
+ * The icon of an app which the pack doesn't cover. Tapping it opens the menu which lets the
+ * user give the app one of the pack's icons.
+ */
+@Composable
+private fun SystemAppIcon(
+    app: InstalledApp,
+    onClick: () -> Unit,
+    modifier: Modifier = Modifier,
+) {
+    val packageManager = LocalContext.current.packageManager
+    // Adaptive icons are cropped by toIconBitmap, which renders them at 1.5 times the size.
+    val size = with(LocalDensity.current) { (IconSize * 1.5F).roundToPx() }
+    val icon by produceState<ImageBitmap?>(
+        initialValue = null,
+        app.packageName,
+        size,
+    ) {
+        value = withContext(Dispatchers.IO) {
+            runCatching {
+                packageManager
+                    .getApplicationIcon(app.packageName)
+                    .toIconBitmap(size)
+                    .asImageBitmap()
+            }.getOrNull()
+        }
+    }
+
+    Image(
+        bitmap = icon ?: return,
+        contentDescription = null,
+        // The inset matches the painted icons; the app's icon keeps its own shape.
+        modifier = modifier
+            .padding(all = 8.dp)
+            .aspectRatio(ratio = 1F)
+            .clickable(onClick = onClick),
+    )
 }
 
 /**

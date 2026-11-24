@@ -109,40 +109,55 @@ class AppsViewModel(
     val selectedIconNames: StateFlow<Map<String, String>> = _selectedIconNames.asStateFlow()
 
     /**
-     * The apps installed on the device which are covered by the icon pack, each one paired
-     * with the icon of the pack. Apps without an icon are left out, as their system icon
-     * can't be painted.
+     * Every installed app, paired with the icon of the pack if it has one. Apps without an
+     * icon are listed too, so that an icon can be picked for them.
      */
     val installedApps: StateFlow<List<InstalledApp>> = combine(
         installedAppsRepository.installedApps,
         iconRepository.iconInfoModel,
         _selectedIconNames,
     ) { installedApps, iconInfoModel, selectedIconNames ->
-        val iconsByComponent = mutableMapOf<Component, IconInfo>()
-        val iconsByPackage = mutableMapOf<String, IconInfo>()
-        val iconsByName = mutableMapOf<String, IconInfo>()
-
-        iconInfoModel.iconInfo.forEach { iconInfo ->
-            iconsByName.putIfAbsent(iconInfo.drawableName, iconInfo)
-            iconInfo.componentNames.forEach { labelAndComponent ->
-                val component = labelAndComponent.component
-                iconsByComponent.putIfAbsent(component, iconInfo)
-                iconsByPackage.putIfAbsent(component.packageName, iconInfo)
-            }
-        }
-
-        installedApps.mapNotNull { app ->
-            // An icon picked by the user wins over the icon the pack maps to the app.
-            val iconInfo = selectedIconNames[app.packageName]?.let(iconsByName::get)
-                ?: iconsByComponent[Component(app.packageName, app.className)]
-                ?: iconsByPackage[app.packageName]
-            iconInfo?.let { app.copy(iconInfo = it) }
+        // The apps are read faster than the pack's icons, and without them every app would
+        // show its own icon for a moment before the painted one replaces it.
+        if (iconInfoModel.iconInfo.isEmpty()) {
+            emptyList()
+        } else {
+            installedApps.withPackIcons(iconInfoModel, selectedIconNames)
         }
     }.stateIn(
         viewModelScope,
         SharingStarted.WhileSubscribed(5_000),
         emptyList(),
     )
+
+    /**
+     * Pairs each app with the icon of the pack. An icon picked by the user wins over the one
+     * the pack maps to the app, which is looked up by component first and by package second.
+     */
+    private fun List<InstalledApp>.withPackIcons(
+        iconInfoModel: IconInfoModel,
+        selectedIconNames: Map<String, String>,
+    ): List<InstalledApp> {
+        val iconsByName = mutableMapOf<String, IconInfo>()
+        val iconsByComponent = mutableMapOf<Component, IconInfo>()
+        val iconsByPackage = mutableMapOf<String, IconInfo>()
+        iconInfoModel.iconInfo.forEach { iconInfo ->
+            iconsByName.putIfAbsent(iconInfo.drawableName, iconInfo)
+            iconInfo.componentNames.forEach { componentName ->
+                val component = componentName.component
+                iconsByComponent.putIfAbsent(component, iconInfo)
+                iconsByPackage.putIfAbsent(component.packageName, iconInfo)
+            }
+        }
+
+        return map { app ->
+            app.copy(
+                iconInfo = selectedIconNames[app.packageName]?.let(iconsByName::get)
+                    ?: iconsByComponent[Component(app.packageName, app.className)]
+                    ?: iconsByPackage[app.packageName],
+            )
+        }
+    }
 
     /**
      * The colours picked by the user for apps, keyed by the package name of the app.

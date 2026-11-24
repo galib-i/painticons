@@ -74,7 +74,7 @@ enum class IconShape(
 
     companion object {
         /** The shape which is used when the user hasn't picked one (yet). */
-        val Default = Circle
+        val Default = None
 
         /**
          * The shape with the given [name], or [Default] if there is no shape with that name.

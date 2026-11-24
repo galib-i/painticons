@@ -23,8 +23,8 @@ import org.junit.Test
 class IconShapeTest {
 
     @Test
-    fun `default shape is the circle`() {
-        assertEquals(IconShape.Circle, IconShape.Default)
+    fun `default shape is no shape`() {
+        assertEquals(IconShape.None, IconShape.Default)
     }
 
     @Test

@@ -16,14 +16,12 @@ plugins {
 val versionProps = Properties().also {
     it.load(rootProject.file("version.properties").inputStream())
 }
-val versionName = versionProps.getProperty("versionName") ?: "0.0.1"
-val versionCode = (versionProps.getProperty("versionCode") ?: "1").toInt()
+// Prefixed so that defaultConfig, which declares its own versionCode, can't shadow them.
+val appVersionName = versionProps.getProperty("versionName") ?: "0.0.1"
+val appVersionCode = (versionProps.getProperty("versionCode") ?: "1").toInt()
 
-val versionDisplayName = versionName
-
-// Providers for use in androidComponents (lazy evaluation)
-val versionNameProvider = providers.provider { versionName }
-val versionCodeProvider = providers.provider { versionCode }
+// Provider for use in androidComponents (lazy evaluation)
+val versionNameProvider = providers.provider { appVersionName }
 
 android {
     compileSdk = 37
@@ -33,8 +31,8 @@ android {
         applicationId = "app.galib.painticons"
         minSdk = 26
         targetSdk = compileSdk
-        versionCode = versionCode
-        versionName = versionDisplayName
+        versionCode = appVersionCode
+        versionName = appVersionName
         vectorDrawables.useSupportLibrary = true
         val buildCommit = try {
             providers.exec { commandLine("git", "rev-parse", "--short", "HEAD") }.standardOutput.asText.get().trim()

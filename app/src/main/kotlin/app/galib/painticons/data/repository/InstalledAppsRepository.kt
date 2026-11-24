@@ -18,12 +18,11 @@ package app.galib.painticons.data.repository
 
 import android.app.Application
 import android.content.Intent
-import android.graphics.Bitmap
-import android.graphics.drawable.AdaptiveIconDrawable
-import android.graphics.drawable.Drawable
-import androidx.core.graphics.drawable.toBitmap
+import android.content.pm.PackageManager
+import android.content.pm.ResolveInfo
 import app.galib.painticons.data.model.InstalledApp
 import app.galib.painticons.data.util.dominantColors
+import app.galib.painticons.data.util.toIconBitmap
 import dev.zacsweers.metro.AppScope
 import dev.zacsweers.metro.ContributesBinding
 import dev.zacsweers.metro.SingleIn
@@ -61,47 +60,30 @@ class InstalledAppsRepositoryImpl(
         val iconSize = (ICON_SIZE_DP * application.resources.displayMetrics.density).toInt()
 
         return packageManager.queryIntentActivities(launchIntent, 0)
-            .mapNotNull { resolveInfo ->
-                val activityInfo = resolveInfo.activityInfo ?: return@mapNotNull null
-                val appInfo = activityInfo.applicationInfo ?: return@mapNotNull null
-                val icon = runCatching { packageManager.getApplicationIcon(appInfo) }
-                    .getOrNull() ?: return@mapNotNull null
-                val bitmap = icon.toIconBitmap(iconSize)
-
-                InstalledApp(
-                    label = resolveInfo.loadLabel(packageManager).toString(),
-                    packageName = appInfo.packageName,
-                    className = activityInfo.name,
-                    colors = bitmap.dominantColors(),
-                )
-            }
+            .mapNotNull { loadInstalledApp(it, packageManager, iconSize) }
             .sortedWith(compareBy(String.CASE_INSENSITIVE_ORDER) { it.label })
     }
 
-    /**
-     * Renders the icon into a square bitmap of [size] pixels.
-     *
-     * Adaptive icons are drawn with a transparent margin (the outer sixth on each side,
-     * which the launcher would normally mask away), so they are rendered larger and
-     * cropped to make the icon fill the whole item.
-     */
-    private fun Drawable.toIconBitmap(size: Int): Bitmap {
-        if (this !is AdaptiveIconDrawable) return toBitmap(size, size)
+    private fun loadInstalledApp(
+        resolveInfo: ResolveInfo,
+        packageManager: PackageManager,
+        iconSize: Int,
+    ): InstalledApp? {
+        val activityInfo = resolveInfo.activityInfo ?: return null
+        val appInfo = activityInfo.applicationInfo ?: return null
+        val icon = runCatching { packageManager.getApplicationIcon(appInfo) }.getOrNull()
+            ?: return null
 
-        val renderSize = size * 3 / 2
-        val bitmap = toBitmap(renderSize, renderSize)
-        val inset = renderSize / 6
-        val side = renderSize - inset * 2
-        return runCatching {
-            Bitmap.createBitmap(bitmap, inset, inset, side, side)
-        }.getOrDefault(bitmap)
+        return InstalledApp(
+            label = resolveInfo.loadLabel(packageManager).toString(),
+            packageName = appInfo.packageName,
+            className = activityInfo.name,
+            colors = icon.toIconBitmap(iconSize).dominantColors(),
+        )
     }
 
     private companion object {
-        /**
-         * The size of the icons in the grid, in dp. Adaptive icons are rendered larger
-         * and cropped, so the resulting bitmap has this size.
-         */
+        /** The size of the icons in the grid, in dp. */
         const val ICON_SIZE_DP = 48
     }
 }
